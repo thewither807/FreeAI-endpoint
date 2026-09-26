@@ -23,7 +23,12 @@ Turn any GitHub Codespace into a free, portable, OpenAI-compatible LLM API endpo
    ```bash
    ./setup.sh
    ```
-3. Copy the public URL generated at the end of the script output.
+3. Copy the URL generated at the end of the script output.
+> ⚠️ **Crucial Step — Change Port Visibility to Public**:
+> 1. Open the **Ports** tab in Codespaces (bottom panel next to Terminal).
+> 2. Locate port `11434`.
+> 3. Right-click on **Visibility** (set to *Private* by default) and change it to **Public**.
+> 4. If the port remains *Private*, any API requests sent to your URL will fail with a `401 Unauthorized` error.
 
 ---
 
