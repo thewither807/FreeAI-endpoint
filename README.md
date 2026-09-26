@@ -22,7 +22,17 @@ Turn any GitHub Codespace into a free, portable, OpenAI-compatible LLM API endpo
 2. Run the initialization script in the Codespace terminal:
    ```bash
    ./setup.sh
-Copy the public URL generated at the end of the script output.2. Connect Your App (Windows / Local Machine)Use standard OpenAI client libraries pointing to your Codespace URL:Pythonfrom openai import OpenAI
+   ```
+3. Copy the public URL generated at the end of the script output.
+
+---
+
+### 2. Connect Your App (Windows / Local Machine)
+
+Use standard OpenAI client libraries pointing to your Codespace URL:
+
+```python
+from openai import OpenAI
 
 client = OpenAI(
     base_url="[https://YOUR-CODESPACE-NAME-11434.app.github.dev/v1](https://YOUR-CODESPACE-NAME-11434.app.github.dev/v1)",
@@ -39,6 +49,34 @@ for chunk in response:
     content = chunk.choices[0].delta.content
     if content is not None:
         print(content, end="", flush=True)
-🔀 AutoRoute Plugin (Local Load Balancer)To enable random load balancing with model="auto":Navigate to the AutoRoute-Plugin folder on your local machine.Install requirements:Bashpip install -r requirements.txt
-Update CODESPACE_URL inside AutoRoute.py with your active URL.Run the local proxy:Bashpython AutoRoute.py
-Point your applications to http://localhost:5000/v1 with model="auto".🛠️ Management ScriptsScriptAction./setup.shInstalls Ollama, exposes port 11434, and pulls default models../NewModels.shPulls custom models into your running instance../DeleteModel.shRemoves unused models to free up disk space.
+
+print()
+```
+
+---
+
+## 🔀 AutoRoute Plugin (Local Load Balancer)
+
+To enable random load balancing with `model="auto"`:
+
+1. Navigate to the `AutoRoute-Plugin` folder on your local machine.
+2. Install requirements:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Update `CODESPACE_URL` inside `AutoRoute.py` with your active URL.
+4. Run the local proxy:
+   ```bash
+   python AutoRoute.py
+   ```
+5. Point your applications to `http://localhost:5000/v1` with `model="auto"`.
+
+---
+
+## 🛠️ Management Scripts
+
+| Script | Action |
+| :--- | :--- |
+| `./setup.sh` | Installs Ollama, exposes port 11434, and pulls default models. |
+| `./NewModels.sh` | Pulls custom models into your running instance. |
+| `./DeleteModel.sh` | Removes unused models to free up disk space. |
