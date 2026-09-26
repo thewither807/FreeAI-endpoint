@@ -35,7 +35,7 @@ Use standard OpenAI client libraries pointing to your Codespace URL:
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="[https://YOUR-CODESPACE-NAME-11434.app.github.dev/v1](https://YOUR-CODESPACE-NAME-11434.app.github.dev/v1)",
+    base_url="https://YOUR-CODESPACE-NAME-11434.app.github.dev/v1",
     api_key="ollama"
 )
 
